@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twemoji Finder</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <meta
+      name="description"
+      content="Find the source SVG or PNG for any of Twitter's Twemojis"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Twemoji Finder</h1>
+        <p>
+          Get the SVG or PNG for any
+          <a href="https://twemoji.twitter.com/">Twemoji</a>
+        </p>
+      </header>
+      <form name="emoji-form">
+        <div class="field">
+          <label for="emoji-input">Emoji</label>
+          <input id="emoji-input" name="emoji" />
+          <button>Search</button>
+        </div>
+        <small>Twemoji v13.0.1</small>
+      </form>
+      <div id="notification" hidden="hidden" aria-live="assertive"></div>
+      <div aria-live="polite" id="output"></div>
+    </main>
+    <footer>
+      Built by
+      <a href="https://seanmcp.com" target="_blank" rel="noreferrer noopener">
+        SeanMcP
+      </a>
+    </footer>
+    <script
+      src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
