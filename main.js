@@ -13,14 +13,18 @@
 
   document
     .querySelector('form[name="emoji-form"]')
-    .addEventListener("submit", (event) => {
+    .addEventListener("submit", async (event) => {
       event.preventDefault();
       clearNotification();
       outputEl.innerHTML = "";
 
-      const emoji = new FormData(event.target).get("emoji");
+      
+      const fd = new FormData(event.target)
+      const emoji = fd.get("emoji");
+      const version = fd.get("version");
       if (!emoji) return;
-
+      
+      const { default: twemoji } = await import(`https://twemoji.maxcdn.com/v/${version}/twemoji.esm.js`)
       const parsed = twemoji.parse(emoji);
 
       if (parsed === emoji)
@@ -38,16 +42,16 @@
             ${parsed}
             <ul class="links">
                 <li>
-                    <a href="https://github.com/twitter/twemoji/blob/v13.0.1/assets/svg/${unicode}.svg" target="_blank" rel="noreferrer noopener">SVG</a>
+                    <a href="https://github.com/twitter/twemoji/blob/v${version}/assets/svg/${unicode}.svg" target="_blank" rel="noreferrer noopener">SVG</a>
                 </li>
                 <li>
-                    <a href="https://raw.githubusercontent.com/twitter/twemoji/v13.0.1/assets/svg/${unicode}.svg" target="_blank" rel="noreferrer noopener">SVG raw</a>
+                    <a href="https://raw.githubusercontent.com/twitter/twemoji/v${version}/assets/svg/${unicode}.svg" target="_blank" rel="noreferrer noopener">SVG raw</a>
                 </li>
                 <li>
-                    <a href="https://github.com/twitter/twemoji/blob/v13.0.1/assets/72x72/${unicode}.png" target="_blank" rel="noreferrer noopener">PNG</a>
+                    <a href="https://github.com/twitter/twemoji/blob/v${version}/assets/72x72/${unicode}.png" target="_blank" rel="noreferrer noopener">PNG</a>
                 </li>
                 <li>
-                    <a href="https://github.com/twitter/twemoji/raw/v13.0.1/assets/72x72/${unicode}.png" target="_blank" rel="noreferrer noopener">PNG download</a>
+                    <a href="https://github.com/twitter/twemoji/raw/v${version}/assets/72x72/${unicode}.png" target="_blank" rel="noreferrer noopener">PNG download</a>
                 </li>
             </ul>
         </div>

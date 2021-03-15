@@ -30,7 +30,13 @@
           <input id="emoji-input" name="emoji" />
           <button>Search</button>
         </div>
-        <small>Twemoji v13.0.1</small>
+        <label>
+          <small>Twemoji version</small>
+          <select name="version">
+            <option value="13.0.2">13.0.2</option>
+            <option value="13.0.1">13.0.1</option>
+          </select>
+        </label>
       </form>
       <div id="notification" hidden="hidden" aria-live="assertive"></div>
       <div aria-live="polite" id="output"></div>
